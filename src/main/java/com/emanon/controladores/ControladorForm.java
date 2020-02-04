@@ -1,5 +1,7 @@
 package com.emanon.controladores;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,14 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.emanon.model.Persona;
+import com.emanon.modelos.Persona;
 
 @Controller
 @RequestMapping("/form")
 public class ControladorForm {
 	
+	private static final Log LOGGER = LogFactory.getLog(ControladorForm.class);
+	
 	public static final String VIEW_FORM= "form";
 	public static final String VIEW_RESULT_FORM= "resultForm";
+	
+	
 	
 	@GetMapping("/")
 	public RedirectView redirect() {
@@ -27,16 +33,16 @@ public class ControladorForm {
 	
 	@GetMapping("/showForm")
 	public String showForm(Model modelo) {
+		LOGGER.info("METHOD: 'showForm' -- PATH: '/form/showForm' -- TEMPLATE: '"+ VIEW_FORM + "'");
 		modelo.addAttribute("persona", new Persona());
 		return VIEW_FORM;
 	}
 	
 	@PostMapping("/addPersona")
 	public ModelAndView addPersona(@ModelAttribute("persona") Persona persona) {
+		LOGGER.info("METHOD: 'addPersona' -- PATH: '/form/addPersona' -- TEMPLATE: '"+ VIEW_RESULT_FORM + "' -- DATA: '" + persona + "'");
 		ModelAndView modelo = new ModelAndView(VIEW_RESULT_FORM);
 		modelo.addObject("persona", persona);
-		System.out.println(persona.getNombre());
-		System.out.println(persona.getEdad());
 		return modelo;
 	}
 }

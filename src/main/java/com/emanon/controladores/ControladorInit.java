@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.emanon.model.Persona;
+import com.emanon.modelos.Persona;
 @Controller
 @RequestMapping("/init")
 public class ControladorInit {

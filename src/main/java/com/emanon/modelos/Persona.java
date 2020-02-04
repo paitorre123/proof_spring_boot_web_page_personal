@@ -1,4 +1,4 @@
-package com.emanon.model;
+package com.emanon.modelos;
 
 public class Persona {
 	
@@ -15,6 +15,12 @@ public class Persona {
 	}
 	public Persona() {
 		super();
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "Persona [nombre=" + nombre + ", edad=" + edad + "]";
 	}
 	public String getNombre() {
 		return nombre;
