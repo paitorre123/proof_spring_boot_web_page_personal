@@ -33,7 +33,7 @@ public class ControladorInit {
 	}
 	
 	@GetMapping("/request")
-	public ModelAndView requestPorParametro(@RequestParam(name="nb", required = false, defaultValue = "No name") String nombre) {
+	public ModelAndView requestPorParametro(@RequestParam(name="nb", required = false, defaultValue = "no-name") String nombre) {
 		ModelAndView modelo = new ModelAndView(VIEW_HELLO);
 		modelo.addObject("nombre_in_model",nombre);
 		return modelo;
