@@ -10,7 +10,11 @@
     <main>
 
         <form action="#" th:action="@{/form/addPersona}" th:object="${persona}" method="POST">
+        	<!-- validacion del nombre -->
+        	<p th:if="${#fields.hasErrors('nombre')}"  th:errors="*{nombre}"></p>
             <p>Nombre: <input type="text"  th:field="*{nombre}"></p>
+            <!-- validacion de la edad -->
+            <p th:if="${#fields.hasErrors('edad')}"  th:errors="*{edad}"></p>
             <p>Edad: <input type="number" th:field="*{edad}"></p>
             <p><input type="submit" value="Enviar"></p>
         </form>
