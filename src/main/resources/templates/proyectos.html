@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta charset="UTF-8">
+<title>Proyectos</title>
+
+<style>
+     body
+     {
+      margin:0;
+      padding:0;
+      background-color:#f1f1f1;
+     }
+     .box
+     {
+      width:1270px;
+      padding:20px;
+      background-color:#fff;
+      border:1px solid #ccc;
+      border-radius:5px;
+      margin-top:25px;
+      box-sizing:border-box;
+     }
+</style>
+</head>
+<body>
+	<main>
+		<div class="container box">
+			<table id="proyecto_data" class="table table-bordered table-striped" >
+				<thead>
+					<tr>
+						<th>Nombre proyecto</th>
+						<th>Descripción</th>
+						<th>Horas</th>
+					</tr>
+				</thead>
+				
+				<tbody th:each="proyecto_iterable : ${proyectos}">
+					<tr >
+					
+						<td th:text="${proyecto_iterable.nombre}" contenteditable></td>
+						<td th:text="${proyecto_iterable.descripcion}" contenteditable></td>
+						<td th:text="${proyecto_iterable.horas}"contenteditable></td>
+						<th> 
+							<a th:href="|@{/proyecto/removeProyecto/$__{proyecto_iterable.id_proyecto}__}|" class="btn btn-danger">X</a>
+										
+							<input type="submit" value="UPDATE" class="btn btn-success btn-xs">
+							
+						</th>
+					
+					</tr>
+				</tbody>
+				
+			</table>
+			
+			<form action="#" th:action="@{/proyecto/addProyecto}" th:object="${proyecto}" method="post">
+				<p>Nombre: <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ingresar nombre"> </p>
+				<p>Descripcion: <input type="text" th:field="*{descripcion}" class="form-control" placeholder="Ingresar descripcion"> </p>
+				<p>Horas: <input type="number" th:field="*{horas}" class="form-control"> </p>
+				<p> <input type="submit" value="agregar" class="btn btn-success btn-xs"> </p>
+			</form>
+		</div>
+	</main>
+</body>
+</html>

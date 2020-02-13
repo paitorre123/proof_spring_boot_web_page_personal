@@ -6,7 +6,10 @@ server:
   error: 
     whitelabel:
           enabled: false
-          
+
+#configuracion de base de datos
+#nombre bd: base_emanon
+#password db: emanonpass          
 spring:
   datasource:    url: jdbc:mysql://localhost:3306/base_emanon?useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
