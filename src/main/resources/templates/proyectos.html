@@ -44,9 +44,7 @@
 						<td th:text="${proyecto_iterable.descripcion}" contenteditable></td>
 						<td th:text="${proyecto_iterable.horas}"contenteditable></td>
 						<th> 
-							<a th:href="|@{/proyecto/removeProyecto/$__{proyecto_iterable.id_proyecto}__}|" class="btn btn-danger">X</a>
-										
-							<input type="submit" value="UPDATE" class="btn btn-success btn-xs">
+							<a th:href="|@{/proyecto/removeProyecto/__${proyecto_iterable.id_proyecto}__}|" class="btn btn-danger">X</a>
 							
 						</th>
 					
@@ -55,7 +53,7 @@
 				
 			</table>
 			
-			<form action="#" th:action="@{/proyecto/addProyecto}" th:object="${proyecto}" method="post">
+			<form  th:action="@{/proyecto/addProyecto}" th:object="${proyecto}" method="post">
 				<p>Nombre: <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ingresar nombre"> </p>
 				<p>Descripcion: <input type="text" th:field="*{descripcion}" class="form-control" placeholder="Ingresar descripcion"> </p>
 				<p>Horas: <input type="number" th:field="*{horas}" class="form-control"> </p>
