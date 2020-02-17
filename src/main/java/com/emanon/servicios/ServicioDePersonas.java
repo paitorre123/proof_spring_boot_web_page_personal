@@ -7,7 +7,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 
-import com.emanon.controladores.ControladorForm;
 import com.emanon.modelos.Persona;
 
 @Service("servicioDePersonas")

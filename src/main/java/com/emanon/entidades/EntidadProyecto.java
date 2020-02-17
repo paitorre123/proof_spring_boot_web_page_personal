@@ -6,8 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.springframework.context.annotation.Scope;
-
 @Entity
 @Table(name="proyecto")
 public class EntidadProyecto {
