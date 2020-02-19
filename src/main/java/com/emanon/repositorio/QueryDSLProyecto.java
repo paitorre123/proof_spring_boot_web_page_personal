@@ -1,5 +1,7 @@
 package com.emanon.repositorio;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -20,5 +22,7 @@ public class QueryDSLProyecto {
 	public void find() {
 		JPAQuery<EntidadProyecto> query = new JPAQuery<EntidadProyecto>();
 		query.select(qEntidadProyecto).from(qEntidadProyecto).where(qEntidadProyecto.id_proyecto.eq(23)).fetchOne();
+		
+		List<EntidadProyecto> listaProyectos = query.select(qEntidadProyecto).from(qEntidadProyecto).where(qEntidadProyecto.horas.between(100, 200)).fetch();
 	}
 }

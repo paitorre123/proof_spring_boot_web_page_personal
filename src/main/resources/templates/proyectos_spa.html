@@ -6,6 +6,9 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://www.technicalkeeda.com/js/javascripts/plugin/jquery.js"></script>
+<script type="text/javascript" src="https://www.technicalkeeda.com/js/javascripts/plugin/json2.js"></script>
+  
 <meta charset="UTF-8">
 <title>Proyectos</title>
 
@@ -36,15 +39,7 @@
 		<div class="container box">
 			
 			<table id="proyecto_data" class="table table-bordered table-striped" >
-				<thead>
-					<tr>
-						<th>Nombre proyecto</th>
-						<th>Descripción</th>
-						<th>Horas</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
+				
 			</table>
 			
 		</div>
@@ -52,34 +47,27 @@
 </body>
 	<script type="text/javascript" language="javascript">
 		$(document).ready(function(){
-			
 			fetch_data();
 	        
             function fetch_data(){
+         
                 $.ajax({
-                    url:"",
+                	
+                    url:"/proyecto/json/search",
                     method:"POST",
+                    contentType:"application/json; charset=utf-8",
+                    dataType:"json",
+                    success:function(response){
                     
-                    success:function(data){
-                    	var response = JSON.stringify(data);
                     	alert(response);
                     }
                 });
             }
             
-            fetch_data();
             
-            function fetch_data(){
-                var dataTable = $('#user_data').DataTable({
-                    "processing" : true,
-                    "serverSide" : true,
-                    "order" : [],
-                    "ajax" : {
-                        url:"/proyecto/json/search",
-                        type:"POST"
-                    }
-                });
-            }
+         
+            
+          
 			$('#add').click(function(){
 	               var html = '<tr>';
 	               html += '<td contenteditable id="data1"></td>';

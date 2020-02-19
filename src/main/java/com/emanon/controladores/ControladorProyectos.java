@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -70,7 +71,7 @@ public class ControladorProyectos {
 		 return "redirect:/proyecto/listadoProyectos";
 	 }
 	 
-	 @PostMapping(value="/json/search", produces = "application/json")
+	 @PostMapping(value="/json/search", produces = MediaType.APPLICATION_JSON_VALUE)
 	 @ResponseBody
 	 public List<EntidadProyecto>findAll(){
 		 return servicioDeProyectos.listarTodosProyectos();
