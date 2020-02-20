@@ -3,7 +3,7 @@ package com.emanon.modelos;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-public class Usuario{
+public class CredencialUsuario{
 	
 	@NotNull
 	@Size(min=2, max=10)

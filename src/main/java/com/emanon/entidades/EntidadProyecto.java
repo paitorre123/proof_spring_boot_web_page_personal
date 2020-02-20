@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="proyecto")
 public class EntidadProyecto {
-	
+	//https://en.wikibooks.org/wiki/Java_Persistence/Advanced_Topics#Views
 	@Id
 	@GeneratedValue
 	@Column(name="id_proyecto")
