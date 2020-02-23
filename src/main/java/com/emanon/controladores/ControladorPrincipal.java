@@ -17,8 +17,7 @@ import com.emanon.modelos.CredencialUsuario;
 @Controller
 public class ControladorPrincipal {
 	
-	public static String LOGIN_VIEW = "login";
-	public static String CONTACTS_VIWE = "contacts";
+	private static final String LOGIN_VIEW = "login";
 	
 	private static final Log LOG = LogFactory.getLog(ControladorPrincipal.class);
 	
@@ -43,8 +42,8 @@ public class ControladorPrincipal {
 		LOG.info("METODO : loginCheck() -- PARAMETROS: credenciasles-usuario="+ usuario );
 		ModelAndView model = new ModelAndView();
 		if(!bindingResult.hasErrors() && (usuario.getNombreUsuario().equals("usuario") && usuario.getClave().equals("12345678")) ) {
-			LOG.info("Retorno a vista /contacts");
-			model.setViewName(CONTACTS_VIWE);
+			LOG.info("Retorno a vista /proyectos");
+			model.setViewName("redirect:/proyecto/listadoProyectos");
 		} else {
 			LOG.info("Retorno a vista /login?error");
 			model.setViewName("redirect:/login?error");

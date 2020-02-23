@@ -3,6 +3,10 @@
 <head>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <title>Proyectos</title>
 
@@ -23,6 +27,8 @@
       margin-top:25px;
       box-sizing:border-box;
      }
+     
+     
 </style>
 </head>
 <body>
@@ -44,8 +50,17 @@
 						<td th:text="${proyecto_iterable.descripcion}" contenteditable></td>
 						<td th:text="${proyecto_iterable.horas}"contenteditable></td>
 						<th> 
-							<a th:href="|@{/proyecto/removeProyecto/__${proyecto_iterable.id_proyecto}__}|" class="btn btn-danger">X</a>
+							<a th:href="|@{/proyecto/removeProyecto/__${proyecto_iterable.id_proyecto}__}|" >
+								<button class="btn btn-lg btn-primary btn-block" type="submit">
+									<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+								</button>
+							</a>
 							
+							<br/>
+							
+							<button class="btn btn-lg btn-primary btn-block" type="submit">
+								<span n class="glyphicon glyphicon-trash" aria-hidden="true"></span> Accept
+							</button>
 						</th>
 					
 					</tr>
@@ -53,13 +68,14 @@
 				
 			</table>
 			
-			<form  th:action="@{/proyecto/addProyecto}" th:object="${proyecto}" method="post">
-				<p>Nombre: <input type="text" th:field="*{nombre}" class="form-control" placeholder="Ingresar nombre"> </p>
-				<p>Descripcion: <input type="text" th:field="*{descripcion}" class="form-control" placeholder="Ingresar descripcion"> </p>
-				<p>Horas: <input type="number" th:field="*{horas}" class="form-control"> </p>
-				<p> <input type="submit" value="agregar" class="btn btn-success btn-xs"> </p>
-			</form>
-		</div>
+			<a th:href="@{/proyecto/showFormularioProyecto}">
+				<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add proyecto</button>	
+			</a>
+			<br>
+			<a th:href="@{/login?logout}">
+				<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</button>
+			</a>
+			
 	</main>
 </body>
 </html>

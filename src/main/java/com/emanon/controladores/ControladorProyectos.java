@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,8 @@ public class ControladorProyectos {
 	
 	private static final Log LOG = LogFactory.getLog(ControladorProyectos.class);
 	
-	 private static final String PROYECTOS_VIEW = "proyectos_spa";
+	 private static final String PROYECTOS_VIEW = "proyectos";
+	 private static final String FORMULARIO_PROYECTO_VIEW = "formularioProyecto";
 	 
 	 @Autowired
 	 @Qualifier("servicioDeProyectos")
@@ -37,6 +39,17 @@ public class ControladorProyectos {
 	 @Qualifier("convertidorProyecto")
 	 private ConvertidorProyecto convertidorProyecto;
 	 
+	 @GetMapping("/showFormularioProyecto")
+	 public String showFormularioProyecto(Model model) {
+		 LOG.info("URL: /proyecto/showFormularioProyecto -- CALL: showFormularioProyecto() -- VIEW: "+ FORMULARIO_PROYECTO_VIEW );
+		 model.addAttribute("proyecto", new EntidadProyecto());
+		 return FORMULARIO_PROYECTO_VIEW;
+	 }
+	 
+	 @GetMapping("/cancelar")
+	 public String cancelar() {
+		 return PROYECTOS_VIEW;
+	 }
 	 
 	 @GetMapping("/listadoProyectos")
 	 public ModelAndView listarTodosProyectos() {

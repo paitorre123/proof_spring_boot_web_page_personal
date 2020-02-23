@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Agregar/modificar proyecto</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<div class="jumbotron">
+		<div class="container">
+			<h1>Formulario Proyecto</h1>
+			<br/>
+			<form action="#" th:action="@{/proyecto/addProyecto}" th:object="${proyecto}" method="post">
+				Nombre: <input  th:field="*{nombre}" type="text" class="form-control"></input>
+				<br/>
+				Horas: <input th:field="*{horas}" type="number" class="form-control"></input>
+				<br/>
+				Descripcion: <textarea th:field="*{descripcion}" class="form-control" rows="3" id="comment"></textarea>
+				<br/>
+				
+				<br/>
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>Aceptar
+				</button>
+				
+			</form>
+			<br/>
+			<a th:href="@{/proyecto/cancelar}">
+				<button class="btn btn-lg btn-primary btn-block" type="submit">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancelar
+				</button>
+			</a>
+			
+		</div>
+	</div>
+
+</body>
+</html>
