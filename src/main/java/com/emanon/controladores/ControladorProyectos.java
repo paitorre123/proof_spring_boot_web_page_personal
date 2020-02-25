@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.emanon.converter.ConvertidorProyecto;
+import com.emanon.componentes.ConvertidorProyecto;
 import com.emanon.entidades.EntidadProyecto;
 import com.emanon.modelos.Proyecto;
 import com.emanon.servicios.ServicioDeProyectos;
@@ -48,7 +48,7 @@ public class ControladorProyectos {
 	 
 	 @GetMapping("/cancelar")
 	 public String cancelar() {
-		 return PROYECTOS_VIEW;
+		 return "redirect:/proyecto/listadoProyectos";
 	 }
 	 
 	 @GetMapping("/listadoProyectos")
@@ -61,9 +61,9 @@ public class ControladorProyectos {
 	 }
 	 
 	 @PostMapping("/addProyecto")
-	 public String addProyecto(@ModelAttribute("proyecto") Proyecto proyecto) {
+	 public String addProyecto(@ModelAttribute("proyecto") EntidadProyecto proyecto) {
 		 LOG.info("URL: /proyecto/addProyecto -- CALL: addProyecto() PARAM: "+ proyecto.toString());
-		 servicioDeProyectos.addProyecto(convertidorProyecto.proyectoDesdeModeloAEntidad(proyecto));
+		 servicioDeProyectos.addProyecto(proyecto);
 		 return "redirect:/proyecto/listadoProyectos";
 	 }
 	 
@@ -77,11 +77,11 @@ public class ControladorProyectos {
 		 return "redirect:/proyecto/listadoProyectos";
 	 }
 	 
-	 @PostMapping("/updateProyecto")
-	 public String updateProyecto(@ModelAttribute("proyecto_iterable") Proyecto proyecto) {
-		 LOG.info("URL: /proyecto/updateProyecto -- CALL: updateProyecto() PARAM: "+ proyecto.toString());
-		 servicioDeProyectos.modificarProyecto(convertidorProyecto.proyectoDesdeModeloAEntidad(proyecto));
-		 return "redirect:/proyecto/listadoProyectos";
+	 @GetMapping("/modificarProyecto/{id_proyecto}")
+	 public String modificarProyecto(@PathVariable("id_proyecto") int id_proyecto,  Model model) {
+		 LOG.info("URL: /proyecto/updateProyecto -- CALL: updateProyecto() PARAM: "+ id_proyecto);
+		 model.addAttribute("proyecto", servicioDeProyectos.getProyectoPorId(id_proyecto));
+		 return FORMULARIO_PROYECTO_VIEW;
 	 }
 	 
 	 @PostMapping(value="/json/search", produces = MediaType.APPLICATION_JSON_VALUE)

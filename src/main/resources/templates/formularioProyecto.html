@@ -20,11 +20,12 @@
 			<h1>Formulario Proyecto</h1>
 			<br/>
 			<form action="#" th:action="@{/proyecto/addProyecto}" th:object="${proyecto}" method="post">
-				Nombre: <input  th:field="*{nombre}" type="text" class="form-control"></input>
+				<input  th:field="*{id_proyecto}" type="hidden"></input>
+				Nombre: <input  th:field="*{nombre}" type="text" class="form-control" th:value="${nombre}"></input>
 				<br/>
-				Horas: <input th:field="*{horas}" type="number" class="form-control"></input>
+				Horas: <input th:field="*{horas}" type="number" class="form-control" th:value="${horas}"></input>
 				<br/>
-				Descripcion: <textarea th:field="*{descripcion}" class="form-control" rows="3"></textarea>
+				Descripcion: <textarea th:field="*{descripcion}" class="form-control" rows="3" th:value="${descripcion}"></textarea>
 				<br/>
 				
 				<br/>

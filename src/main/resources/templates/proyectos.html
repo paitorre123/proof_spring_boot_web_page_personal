@@ -46,14 +46,16 @@
 				<tbody th:each="proyecto_iterable : ${proyectos}">
 					<tr >
 					
-						<td th:text="${proyecto_iterable.nombre}" contenteditable></td>
-						<td th:text="${proyecto_iterable.descripcion}" contenteditable></td>
-						<td th:text="${proyecto_iterable.horas}"contenteditable></td>
+						<td th:text="${proyecto_iterable.nombre}"></td>
+						<td th:text="${proyecto_iterable.descripcion}" ></td>
+						<td th:text="${proyecto_iterable.horas}"></td>
 						<th> 
-						
-							<button type="button" class="btn btn-info">
-								<i class="fas fa-edit"></i>Editar
-							</button>
+							<a th:href="|@{/proyecto/modificarProyecto/__${proyecto_iterable.id_proyecto}__}|">
+								<button type="button" class="btn btn-info" >
+									<i class="fas fa-edit"></i>Editar
+								</button>
+							</a>
+							
 							
 							<a th:href="|@{/proyecto/removeProyecto/__${proyecto_iterable.id_proyecto}__}|" >
 								<button type="button" class="btn btn-danger">
@@ -78,4 +80,7 @@
 			
 	</main>
 </body>
+
+
+
 </html>
