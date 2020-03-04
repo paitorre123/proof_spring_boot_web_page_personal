@@ -21,10 +21,7 @@ public class ControladorPrincipal {
 	
 	private static final Log LOG = LogFactory.getLog(ControladorPrincipal.class);
 	
-	@GetMapping(value= {"", "/", "/index"})
-	public String index() {
-		return "redirect:/login";
-	}
+
 	
 	@GetMapping("/login")
 	public ModelAndView showLogin(  @RequestParam(name="error", required = false) String error,
@@ -37,17 +34,9 @@ public class ControladorPrincipal {
 		LOG.info("Retorno a vista /login");
 		return model;
 	}
-	@PostMapping("/logincheck")
-	public ModelAndView loginCheck(@Valid @ModelAttribute("usuario") CredencialUsuario usuario, BindingResult bindingResult) {
-		LOG.info("METODO : loginCheck() -- PARAMETROS: credenciasles-usuario="+ usuario );
-		ModelAndView model = new ModelAndView();
-		if(!bindingResult.hasErrors() && (usuario.getNombreUsuario().equals("usuario") && usuario.getClave().equals("12345678")) ) {
-			LOG.info("Retorno a vista /proyectos");
-			model.setViewName("redirect:/proyecto/listadoProyectos");
-		} else {
-			LOG.info("Retorno a vista /login?error");
-			model.setViewName("redirect:/login?error");
-		}
-		return model;
+	@GetMapping({"/loginsuccess", "/"})
+	public String loginCheck() {
+		
+		return "redirect:/proyecto/listadoProyectos";
 	}
 }	
